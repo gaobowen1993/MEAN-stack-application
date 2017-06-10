@@ -1,14 +1,13 @@
-.env
-/build
-/node_modules
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/tmp
 
 # dependencies
 /node_modules
+
+# dotenv
+.env
+
+# build dir
+build
 
 # IDEs and editors
 /.idea
@@ -33,10 +32,6 @@
 npm-debug.log
 testem.log
 /typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
 
 #System Files
 .DS_Store
