@@ -30,7 +30,7 @@ export default (req, res) => {
           }
         });
       } else {
-        return res.json({success:false, msg: 'wrong password'});
+        return res.json({success:false, msg: 'Wrong password'});
       }
     });
   });
