@@ -3,8 +3,8 @@ This is a M(MongoDB)E(Express)A(AngularJS)N(Node.js) stack application with the 
 
 # Prerequisite
 Install the following software:
-1.node.js
-2.npm
+- node.js
+- npm
 
 # Installing
 1.npm install
