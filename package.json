@@ -2,21 +2,28 @@
   "name": "meanauthapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "start": "node ./build/app.js",
+    "local": "babel node-src -w -d ./build/ | nodemon -r dotenv/config ./build/app.js",
+    "build": "babel node-src -d ./build/"
   },
   "dependencies": {
-  	"express":"*",
-  	"mongoose":"*",
-  	"bcryptjs":"*",
-  	"cors":"*",
-  	"jsonwebtoken":"*",
-  	"body-parser":"*",
-  	"passport":"*",
-  	"passport-jwt":"*"
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "dotenv": "^4.0.0",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "bowen",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2"
+  }
 }
