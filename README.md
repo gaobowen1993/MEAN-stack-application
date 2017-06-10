@@ -7,8 +7,8 @@ Install the following software:
 - npm
 
 # Installing
-1.npm install
-2.npm run local
+1. npm install
+2. npm run local
 
 # Coding style
 Code in ES6
