@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http, Headers, Response } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
 import { tokenNotExpired } from 'angular2-jwt';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthService {
@@ -10,37 +14,56 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
-  registerUser(user) {
-    let headers = new Headers();
-    headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
-      .map(res => res.json());
+  private handleError (error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      errMsg = `${error.status} - ${error.statusText || ''}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 
-  authenticateUser(user) {
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || { };
+  }  
+
+  registerUser(user): Observable<any> {
+    let headers = new Headers();
+    headers.append('Content-type', 'application/json');
+    return this.http.post('http://localhost:3000/users/registe', user, {headers: headers})
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  authenticateUser(user): Observable<any>  {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
-      .map(res => res.json());    
+      .map(this.extractData)
+      .catch(this.handleError);    
   }
 
-  getProfile() {
+  getProfile(): Observable<any>  {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-type', 'application/json');
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
-      .map(res => res.json());      
+      .map(this.extractData)
+      .catch(this.handleError);      
   }
 
-  storeUserData(token, user) {
+  storeUserData(token, user): void {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
 
-  loadToken() {
+  loadToken(): void {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
   }
@@ -49,7 +72,7 @@ export class AuthService {
     return tokenNotExpired('id_token');
   }
 
-  logOut() {
+  logOut(): void {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
