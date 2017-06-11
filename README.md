@@ -7,8 +7,21 @@ Install the following software:
 - npm
 
 # Installing
-1. npm install
-2. npm run local
+In the root folder type
+```
+npm install
+npm run local
+```
+
+In the angular-src folder type
+```
+npm install
+ng build
+```
+
+# Run
+Open browser type
+`localhost://3000`
 
 # Coding style
 Code in ES6
