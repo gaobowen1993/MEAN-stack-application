@@ -33,7 +33,7 @@ export class AuthService {
   registerUser(user): Observable<any> {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:8080/users/register', user, {headers: headers})
+    return this.http.post('register', user, {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -41,7 +41,7 @@ export class AuthService {
   authenticateUser(user): Observable<any>  {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:8080/users/authenticate', user, {headers: headers})
+    return this.http.post('authenticate', user, {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);    
   }
@@ -51,7 +51,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-type', 'application/json');
-    return this.http.get('http://localhost:8080/users/profile', {headers: headers})
+    return this.http.get('users/profile', {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);      
   }
