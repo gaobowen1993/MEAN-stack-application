@@ -18,12 +18,11 @@
     "jsonwebtoken": "*",
     "mongoose": "*",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "nodemon": "^1.11.0"
   },
   "author": "bowen",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.2"
-  }
+  "license": "ISC"
 }
