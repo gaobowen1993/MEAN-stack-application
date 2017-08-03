@@ -1,4 +1,4 @@
 export default {
-  database: "mongodb://localhost:27017/meanauth",
+  database: 'mongodb://michael:michael@ds143737.mlab.com:43737/michael_gao_meanauthapp',
   secret: 'yoursecret'
 }
