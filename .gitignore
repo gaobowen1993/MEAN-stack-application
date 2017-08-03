@@ -7,7 +7,6 @@
 .env
 
 # build dir
-build
 
 # IDEs and editors
 /.idea
