@@ -736,14 +736,14 @@ var AuthService = (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-type', 'application/json');
-        return this.http.post('register', user, { headers: headers })
+        return this.http.post('users/register', user, { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-type', 'application/json');
-        return this.http.post('authenticate', user, { headers: headers })
+        return this.http.post('users/authenticate', user, { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
     };
